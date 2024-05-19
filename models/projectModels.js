@@ -8,6 +8,7 @@ const ProjectSchema = new Schema({
   photos: [String], 
   role: String,
   company: String,
+  featuredPhoto: String,
 }, {timestamps: true})
 
 module.exports = mongoose.model('Project', ProjectSchema)

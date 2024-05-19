@@ -10,6 +10,7 @@ const morgan = require("morgan")
 
 // require routes
 const projectRouter = require("./routes/projectRoutes")
+const authRouter = require("./routes/authRoutes")
 
 // middleware
 app.use(express.urlencoded({extended:true}));
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // routers
+app.use('/auth', authRouter)
 app.use('/projects', projectRouter)
 
 

@@ -16,8 +16,20 @@ const showProject = async (req, res) => {
   }
 }
 
+const showAll = async (req, res) => {
+  try {
+    res.json(await ProjectModel.find({}))
+  } catch (error) {
+    res.status(400).json(error)
+
+  }
+}
+
 const updateProject = async (req, res) => {
   try {
+    console.log('request:', req.params);
+    console.log('body:', req.body);
+
     res.json(await ProjectModel.findByIdAndUpdate(req.params.id, req.body, {new: true}))
   } catch (error) {
     res.status(400).json(error)
@@ -37,5 +49,6 @@ module.exports = {
   create: createProject, 
   show: showProject, 
   update: updateProject, 
-  delete: deleteProject
+  delete: deleteProject, 
+  showAll
 }
